@@ -1,0 +1,70 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+--init main
+local Window = Rayfield:CreateWindow({
+   Name = "Planetary 🚨ERLC🚨",
+   LoadingTitle = "whats 5 + 2 lol",
+   LoadingSubtitle = "by satuxrnn",
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil, -- Create a custom folder for your hub/game
+      FileName = "erlc_planet"
+   },
+   Discord = {
+      Enabled = false,
+      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
+      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+   },
+   KeySystem = false, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "Untitled",
+      Subtitle = "Key System",
+      Note = "No method of obtaining the key is provided",
+      FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+      GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+      Key = {"Hello"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+   }
+})
+--Tabs
+local FunTab = Window:CreateTab("Fun💫", nil) -- Title, Image
+local HubsTab = Window:CreateTab("Hubs📄", nil) -- Title, Image
+--Sections
+local Hubs = HubsTab:CreateSection("Hubs📄!")
+local FunSection = FunTab:CreateSection("Fun💫!")
+
+--noti
+function NotifyAlert(Title1, Content1)
+    Rayfield:Notify({
+       Title = Title1,
+       Content = Content1,
+       Duration = 6.5,
+       Image = nil,
+       Actions = { -- Notification Buttons
+          Ignore = {
+             Name = "Okay!",
+             Callback = function()
+          end
+       },
+    },
+    })
+end
+NotifyAlert("Planetary", "Thank you for using.")
+
+--buttons
+
+local FlightBTN = FunTab:CreateButton({
+   Name = "Flight.",
+   Callback = function()
+       loadstring(game:HttpGet("https://raw.githubusercontent.com/MariyaFurmanova/Library/main/ER:LC", true))()
+        NotifyAlert("Executed", "Press V to enable and disable..")
+   end,
+})
+
+local AimbotHub = HubsTab:CreateButton({
+   Name = "Aimbot Hub.",
+   Callback = function()
+       loadstring(game:HttpGet("https://raw.githubusercontent.com/RedWirePlatinumTwo/RobloxScripts/main/Aimbot.lua"))()
+        NotifyAlert("Executed", "Hub loaded.")
+   end,
+})
